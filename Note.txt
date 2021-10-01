@@ -59,7 +59,7 @@ La méthode Array.sort() trie et organise les éléments d'un tableau.
 
 La fonction Math.floor(x) renvoie le plus grand entier qui est inférieur ou égal à un nombre x.
 
-La méthode trim() permet de retirer les blancs en début et fin de chaîne.
+La méthode trim() permet de retirer les blancs (les espaces) en début et fin de chaîne.
 
 L'événement onblur se produit lorsqu'un objet perd le focus.
 
@@ -67,4 +67,4 @@ L'événement onblur est le plus souvent utilisé avec le code de validation de 
 
 La méthode substring() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin.
 
-La méthode toLocaleString() renvoie une chaine de caractères représentant la date selon une locale.
+La méthode toLocaleString() renvoie une chaine de caractères représentant la date selon une heure locale.

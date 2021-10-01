@@ -45,9 +45,11 @@ export default class NotesView {
       });
     });
 
-    // Creer un item dans la barre latérale
     // Masquer la note précédente par default
-    console.log(this._createListItemHTML(300, 'Hello World', 'Hey mate', new Date()));
+    // this.updateNotePreviewVisibility(false);
+    
+    // Creer un item dans la barre latérale
+    // console.log(this._createListItemHTML(300, 'Hello World', 'Learn JavaScript', new Date()));
   }
 
   // Gestion d'un item dans la barre latérale
@@ -76,6 +78,7 @@ export default class NotesView {
     // List vide
     notesListContainer.innerHTML = '';
 
+    // Pour chaque notes
     for(const note of notes) {
       const html = this._createListItemHTML(
         note.id,
@@ -84,8 +87,42 @@ export default class NotesView {
         new Date(note.updated)
       );
 
-      // Inserer le html avant la fin du container
+      // Insérer le html avant la fin du container
       notesListContainer.insertAdjacentHTML('beforeend', html);
     }
+
+    // Ajout des évenements Select/delete pour chaque item de la liste
+    notesListContainer.querySelectorAll('.notes__list-item').forEach(noteListItem => {
+      // Selectionner une note
+      noteListItem.addEventListener('click', () => {
+        this.onNoteSelect(noteListItem.dataset.noteId);
+      });
+
+      // Suprimer une note
+      noteListItem.addEventListener('dblclick', () => {
+        const doDelete = confirm('Are u sure to delete ?');
+
+        if(doDelete) {
+          this.onNoteDelete(noteListItem.dataset.noteId);
+        }
+      });
+    });
+  }
+
+  // Affichage de la note courante
+  updateActiveNote(note) {
+    this.root.querySelector('.notes__title').value = note.title;
+    this.root.querySelector('.notes__body').value = note.body;
+
+    this.root.querySelectorAll('.notes__list-item').forEach(noteListItem => {
+      noteListItem.classList.remove('notes__list-item--selected');
+    });
+
+    this.root.querySelector(`.notes__list-item[data-note-id='${note.id}']`).classList.add('notes__list-item--selected');
+  }
+
+  // Masquer la note précédente par defaut
+  updateNotePreviewVisibility(visible) {
+    this.root.querySelector('.notes__preview').style.visibility = visible ? 'visible' : 'hidden';
   }
 }

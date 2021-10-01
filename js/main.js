@@ -1,17 +1,34 @@
-import NotesAPI from './NotesAPI.js';
-import NotesView from './NotesView.js';
+// import NotesAPI from './NotesAPI.js';
+// import NotesView from './NotesView.js';
+import App from './App.js';
 
-const app = document.getElementById('app');
-const view = new NotesView(app, {
-  // Lorsqu'on effectue un click au niveau de la sidebar
-  onNoteAdd() {
-    console.log('Let\'s add new note !');
-  }, 
-  onNoteEdit(newNoteTitle, newNoteBody) {
-    console.log(newNoteTitle);
-    console.log(newNoteBody);
-  }
-});
+// Récupérer la div note
+// const app = document.getElementById('app');
+const root = document.getElementById('app');
+const app = new App(root);
 
-// Afficher les notes de la barre latérale
-view.updatedNoteList(NotesAPI.getAllNotes());
+// Creer un nouvel affichage
+// const view = new NotesView(app, {
+//   // Lorsqu'on click pour ajouter
+//   onNoteAdd() {
+//     console.log('Let\'s add new note !');
+//   },
+//   onNoteSelect(id) {
+//     console.log('Note Selected:' + id);
+//   },
+//   onNoteDelete(id) {
+//     console.log(`Note Deleted ${id}`);
+//     // console.log('Note deleted' + id);
+//   },
+//   onNoteEdit(newNoteTitle, newNoteBody) {
+//     console.log(newNoteTitle);
+//     console.log(newNoteBody);
+//   }
+// });
+
+// const notes = NotesAPI.getAllNotes();
+
+// // Afficher les notes de la barre latérale
+// view.updatedNoteList(notes);
+// // Afficher la note sélectionnée
+// view.updateActiveNote(notes[0]);
